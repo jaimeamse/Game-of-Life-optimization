@@ -5,15 +5,15 @@
 #define X 10000
 #define Y 10000
 
-static unsigned int seed;
+static unsigned char seed;
 
-static inline int myRandom() {
+static inline char myRandom() {
   seed = (214013*seed+2531011);
   return (seed>>16) & 1;
 }
 
 // Coloca valores aleatorios
-void inicializar_tablero ( int T[Y+2][X+2] )
+void inicializar_tablero ( char T[Y+2][X+2] )
 {
   int i, j;
   for ( i= 0; i < X+2; i++ )
@@ -21,14 +21,14 @@ void inicializar_tablero ( int T[Y+2][X+2] )
       T[i][j] = myRandom();
 }
 
-void ajustar_marco( int T[Y+2][X+2] )
+void ajustar_marco( char T[Y+2][X+2] )
 {
   int i;
   for ( i=0; i < X+2; i++ )  T[0][i] = T[Y+1][i] = 0;
   for ( i=0; i < Y+2; i++ )  T[i][0] = T[i][X+1] = 0;
 }
 
-void copiar_tablero ( int in[Y+2][X+2], int out[Y+2][X+2] )
+void copiar_tablero ( char in[Y+2][X+2], char out[Y+2][X+2] )
 {
   int i,j;
   
@@ -38,7 +38,7 @@ void copiar_tablero ( int in[Y+2][X+2], int out[Y+2][X+2] )
 }
 
 
-int evaluar_celda ( int tablero[Y+2][X+2], int fila, int columna )
+int evaluar_celda ( char tablero[Y+2][X+2], int fila, int columna )
 {
   int vecinos, i, j;
   //int YO =  tablero[fila][columna];
@@ -54,12 +54,12 @@ int evaluar_celda ( int tablero[Y+2][X+2], int fila, int columna )
 }
 
 // Tablero del Juego de la VIDA
-static int tablero[Y+2][X+2];
+static char tablero[Y+2][X+2];
 
 // Se usa para preservar valores durante el computo
-static int tablero_auxiliar[Y+2][X+2];
+static char tablero_auxiliar[Y+2][X+2];
 
-int actualizar_tablero ( int tablero_original[Y+2][X+2] )
+int actualizar_tablero ( char tablero_original[Y+2][X+2] )
 {
   int count= 0, old, new, i,j;
 
@@ -105,7 +105,7 @@ int main (int argc, char **argv)
 
   printf( "Matrix is %d x %d.\nNumber of iterations: %d\n", Y, X, time_steps);
 
-  int chk = JuegoDeLaVida ( time_steps );  
+  int chk = JuegoDeLaVida ( time_steps );
 
   printf("CheckSum = %d\n", chk);
 
