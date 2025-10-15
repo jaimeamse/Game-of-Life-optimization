@@ -16,8 +16,8 @@ static inline int myRandom() {
 void inicializar_tablero ( int T[Y+2][X+2] )
 {
   int i, j;
-  for ( j= 0; j < X+2; j++ )
-    for ( i= 0; i < Y+2; i++ )
+  for ( i= 0; i < X+2; i++ )
+    for ( j= 0; j < Y+2; j++ )
       T[i][j] = myRandom();
 }
 
