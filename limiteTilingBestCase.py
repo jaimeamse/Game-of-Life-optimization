@@ -115,13 +115,15 @@ def getBytesL3(m, p, n):
       return bytesTransferidosCaso2(m, p, n)
   else:
       return bytesTransferidosCaso1(m, p, n)
- def getBytesRAM(m, p, n):
+
+def getBytesRAM(m, p, n):
   CP_val = CP(m, p, n)
   L3_size = 18874368.0
   if CP_val*NT < L3_size:
       return bytesTransferidosCaso3(m, p, n)
   else:
       return bytesTransferidosCaso2(m, p, n)
+  
 def getTimeL1(m, p, n):
   bytes = getBytesL1(m, p, n)
   bandwidth = 660.0*(2**30) #bytes/segundo
