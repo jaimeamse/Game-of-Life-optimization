@@ -2,6 +2,7 @@ x = 100000.0
 y = 100000.0
 i = 1000.0
 NT = 6.0
+import math
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # necesario para 3D
 import numpy as np
@@ -172,6 +173,8 @@ def getTotalTime(m, p, n):
 
 x_vals = []
 y_vals = []
+p_vals = []
+m_vals = []
 z_vals = []
 
 for p in range(1, 1000):
@@ -186,8 +189,10 @@ for p in range(1, 1000):
                 print(m)
                 break
             time = getTotalTime(m, p, n)
-            if time < 100.0:
-                x_vals.append(m)
+            if time < 80.0:
+                m_vals.append(m)
+                p_vals.append(p)
+                x_vals.append(math.sqrt(m*p))
                 z_vals.append(n)
                 y_vals.append(time)
 
@@ -201,7 +206,8 @@ ax.set_ylabel("n")
 ax.set_zlabel("Tiempo total")
 
 posMinTime = np.argmin(y_vals)
-print("m del minimo:" + str(x_vals[posMinTime]))
+print("m del minimo:" + str(m_vals[posMinTime]))
+print("p del minimo:" + str(p_vals[posMinTime]))
 print("n del minimo:" + str(z_vals[posMinTime]))
 print("Tiempo minimo:" + str(y_vals[posMinTime]))
 m = x_vals[posMinTime]
