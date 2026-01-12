@@ -85,7 +85,7 @@ char evaluar_celda_2_step_esquina_superior_izquierda( unsigned char* tablero, in
 }
 
 
-char evaluar_celda_2_step_inicio ( unsigned char* tablero, int fila, int columna ) // VECTORIZADO
+static inline char evaluar_celda_2_step_inicio ( unsigned char* tablero, int fila, int columna ) // VECTORIZADO
 {
  char celda = evaluar_celda_XD(tablero, fila, columna);
  char vecinos = tablero[(fila-1)*(X+2)+columna-1] + tablero[(fila-1)*(X+2)+columna] + tablero[(fila-1)*(X+2)+columna+1]
@@ -125,7 +125,7 @@ char evaluar_celda_2_step_esquina_inferior_derecha( unsigned char* tablero, int 
 }
 
 
-char evaluar_celda_2_step_final ( unsigned char* tablero, int fila, int columna ) // VECTORIZADO
+static inline char evaluar_celda_2_step_final ( unsigned char* tablero, int fila, int columna ) // VECTORIZADO
 {
  char celda = evaluar_celda_XD(tablero, fila, columna);
  char vecinos = evaluar_celda_XD(tablero, fila-1, columna-1) + evaluar_celda_XD(tablero, fila-1, columna) + evaluar_celda_XD(tablero, fila-1, columna+1)
